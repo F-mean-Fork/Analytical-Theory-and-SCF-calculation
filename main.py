@@ -5,8 +5,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 if __name__ == "__main__":      
-    
-    
     # Gamma on D
     params = [[256, 24, 8], [1000, 0, 10]]
     colors = {3.0: 'red', 2.0: 'blue', 1.0: 'green'}
@@ -17,7 +15,8 @@ if __name__ == "__main__":
         chi = 0.0
         sigma = 0.01
         tb = TwoBrush(N, sigma, chi, eta)
-        X = np.loadtxt(f"Validation_of_data_for_mu_comparision_with_diff_N\\Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
+        X = np.loadtxt(f"Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
+        
         D = X[0]
         L = X[1]
         G = X[2][0::2]
@@ -42,14 +41,8 @@ if __name__ == "__main__":
         chi = 0.0
         sigma = 0.01
         tb = TwoBrush(N, sigma, chi, eta)
-        # try:
-        #     Hmax = Nb
-        #     tb = TwoBrush(N, sigma, chi, eta)
-        #     tb.Hmax = Hmax
-        # except ValueError:
-        #     continue    
         
-        X = np.loadtxt(f"Validation_of_data_for_mu_comparision_with_diff_N\\Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
+        X = np.loadtxt(f"Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
         D = X[0]
         L = X[1]
         F = X[4]
@@ -78,20 +71,12 @@ if __name__ == "__main__":
         chi = 0.0
         sigma = 0.01
         tb = TwoBrush(N, sigma, chi, eta)
-        # try:
-        #     Hmax = Nb
-        #     tb = TwoBrush(N, sigma, chi, eta)
-        #     tb.Hmax = Hmax
-        #     H = tb.hight
-        #     tb.H = H
-        # except ValueError:
-        #     continue    
         
-        X = np.loadtxt(f"Validation_of_data_for_mu_comparision_with_diff_N\\Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
+        X = np.loadtxt(f"Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
         D = X[0]
         L = X[1]
         G = X[2]*k           #OmegaL
-        F = X[4]
+        F = X[4]             #Free enegry of the system
         Pi = -np.diff(F)/np.diff(D)
         D = 0.5*(D[1:] + D[:-1])
         G = 0.5*(G[1:] + G[:-1])
@@ -118,20 +103,12 @@ if __name__ == "__main__":
         chi = 0.0
         sigma = 0.01
         tb = TwoBrush(N, sigma, chi, eta)
-        # try:
-        #     Hmax = Nb
-        #     tb = TwoBrush(N, sigma, chi, eta)
-        #     tb.Hmax = Hmax
-        #     H = tb.hight
-        #     tb.H = H
-        # except ValueError:
-        #     continue    
         
-        X = np.loadtxt(f"Validation_of_data_for_mu_comparision_with_diff_N\\Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
+        X = np.loadtxt(f"Nb{Nb}n{n}m{m}sigma{sigma}chi{chi}.txt")
         D = X[0]
         L = X[1]
         G = X[2]*k           #OmegaL
-        F = X[4]
+        F = X[4]             #Free enegry of the system
         Pi = -np.diff(F)/np.diff(D)
         D = 0.5*(D[1:] + D[:-1])
         G = 0.5*(G[1:] + G[:-1])
