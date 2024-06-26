@@ -22,21 +22,19 @@ def func_zeros(a, b, func, delta=1e-7):
 
 
 class FlatBrush:
-    def __init__(
-        self, N: int, sigma: float, chi: float, eta: float, num_bins: int = 100
-    ) -> None:
+    def __init__(self, N: int, sigma: float, chi: float, eta: float, num_bins: int = 100) -> None:
         self.N = N
         self.sigma = sigma
         self.chi = chi
         self.eta = eta
-        self.H = float(N) * 0.5
+        self.H = float(N) / eta**2 * 0.5        # начальные условия Nb = N / (1 + n/m) = N / eta**2
         self.zt = 0.0
-        self.Hmax = float(N) - MINVAL
+        self.Hmax = float(N) / eta**2 *2 - MINVAL  # ограничение по 2Nb = 2N / (1 + n/m) = N / eta**2
         self.num_bins = num_bins
         _ = func_zeros(MINVAL, self.Hmax, self.target_H)
         self.phi = np.hstack([self.phi, np.array([0.0, 0.0])])
         self.z = np.hstack([self.z, np.array([self.H + 0.5*self.dz, self.H+1.5*self.dz])])
-
+        
     def target(self, phi):
         return (3/2*(np.pi*self.eta/(2 * self.N))**2*(self.H**2 - self.zt**2)+np.log(1.0 - phi)+2*self.chi*phi)
 
